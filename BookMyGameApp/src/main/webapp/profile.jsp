@@ -7,13 +7,12 @@
 <meta charset="ISO-8859-1">
 <title>Profile</title>
 </head>
-<%
+<% 
 response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-if(session.getAttribute("mail")==null){
-	response.sendRedirect("./index.html");
+if (session.getAttribute("mail") == null) {
+	response.sendRedirect("http://localhost:9999/BookMyGameApp/login.html");
 }
-
-%>
+%> 
 <body bgcolor="lightyellow">
 <c:set var="t" value='<%=pageContext.getAttribute("type",2) %>'/>
 <c:if test="${t eq 'admin'}">

@@ -1,59 +1,187 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Login</title>
-<style type="text/css">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+     <link rel="icon" type="image/x-icon" href="favicon2.ico">
+    <title>Online Sports Booking</title>
+    <style>
+      /* Apply some global styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        color: #333;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        color: #008080;
+      }
+      a {
+        color: #008080;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+      }
+      a:hover {
+        color: #006666;
+      }
+      /* Style the header */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #008080;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+      }
+      .nav li {
+        list-style: none;
+        margin-left: 20px;
+      }
+      .nav a {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      /* Style the main section */
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px;
+      }
+      form {
+			width: 50%;
+			margin: 0 auto;
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+		}
+		form label {
+			display: block;
+			margin-top: 20px;
+			font-size: 18px;
+			color: #555555;
+		}
+		form input[type=text], form input[type=password], form select {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 18px;
+			color: #555555;
+			margin-top: 5px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+		form a {
+			margin-left: 19%;
+			font-size: 13.5px;
+			color: #0077b3;
+			text-decoration: none;
+		}
+		form input[type=submit] {
+			background-color: #ff0066;
+			color: #ffffff;
+			border: none;
+			border-radius: 5px;
+			font-size: 18px;
+			padding: 10px 20px;
+			cursor: pointer;
+			margin-bottom: 20px;
+		}
+		form input[type=submit]:hover {
+			background-color: #c90052;
+		}
+		p {
+			margin-top: 20px;
+			text-align: center;
+			font-size: 18px;
+			color: #555555;
+		}
+		p a {
+			color: #0077b3;
+			text-decoration: none;
+		}
+      .main-heading {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .cta-button {
+        display: inline-block;
+        padding: 20px 30px;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: #008080;
+        color: #fff;
+        border-radius: 5px;
+        transition: all 0.2s ease-in-out;
+      }
+      .cta-button:hover {
+        background-color: #006666;
+        cursor: pointer;
+      }
+      /* Style the footer */
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0px -2px 5px rgba(0,0,0,0.1);
+      }
+      .footer-text {
+        font-size: 18px;
+        text-align: center;
+      }
+    </style>
+  </head>
 
-  form,p  {    
-        width: 50%;
-        margin-left : 45%
-        
-    }
-
-</style>
-</head>
-
-<body  bgcolor="lightblue">
-<h1 align="center" style="color: red">Book Your Game </h1><br>
-<h2 align="center" style="color: blue">Sign in</h2>
-<form action="./controller/login" method="post">
-   <label for="loginType">Login as:</label>
-  <select id="loginType" name="loginType">
-      <option value="manager">Manager</option>
-    <option value="player">Player</option>
-
-  </select>
-  <br><br>
-
-  <label for="usermail">Email:</label>
-  <input type="text" id="usermail" name="usermail" placeholder="Enter your mail" required>
-  <br><br>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" placeholder="Enter password" required>
-  <br>
-  <a href="forgetPassword.html" style="margin-left: 19%;font-size: 13.5px ;">Forget Password?</a>   <br>
-  <input type="submit" value="Login">
-</form>
-<!-- 
-<script type="text/javascript">
-  var loginType = document.getElementById("loginType");
-  var username = document.getElementById("username");
-  var password = document.getElementById("password");
   
-  loginType.addEventListener("change", function() {
-    if (loginType.value === "Student") {
-      username.setAttribute("placeholder", "Enter roll number");
-      username.setAttribute("name", "student_id");
-     
-    } else {
-      username.setAttribute("placeholder", "Enter Librarian ID");
-    }
-  });
-</script>
-
- -->
-<p>Don't Have an Account? <a href="register.html">Sign up</a></p>
-</body>
-
-</html>
+  
+  
+  <body>
+    <header>
+      <div class="logo">Online Sports Booking</div>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="./controller/checkfeed">Book Now</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </header>
+    <main>
+     <h1>Book Your Game</h1><br>
+	<h2>Sign in</h2><br>
+	<form action="./controller/login" method="post">
+		<label for="loginType">Login as:</label>
+		<select id="loginType" name="loginType">
+			<option value="manager">Manager</option>
+			<option value="player">Player</option>
+		</select>
+		<label for="usermail">Email:</label>
+		<input type="text" id="usermail" name="usermail" placeholder="Enter your mail" required>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" placeholder="Enter password" required>
+		<input type="submit" value="Login">
+	</form>
+</main>
+	<p>Don't Have an Account? <a href="register.html">Sign up</a></p>
+		<p><a href="forgetPassword.html">Forget Password?</a></p><br>
+		</body>
+		</html>

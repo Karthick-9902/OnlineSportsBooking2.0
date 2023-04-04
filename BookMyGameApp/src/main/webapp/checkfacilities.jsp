@@ -1,8 +1,11 @@
+<%@page import="com.bmg.beans.Facility"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
      <link rel="icon" type="image/x-icon" href="favicon2.ico">
     <title>Online Sports Booking</title>
     <style>
@@ -62,62 +65,8 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 30px;
+        padding: 50px;
       }
-      form {
-			width: 50%;
-			margin: 0 auto;
-			background-color: #ffffff;
-			padding: 20px;
-			border-radius: 10px;
-			box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
-		}
-		form label {
-			display: block;
-			margin-top: 20px;
-			font-size: 18px;
-			color: #555555;
-		}
-		form input[type=text], form input[type=password], form select {
-			width: 100%;
-			padding: 10px;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			font-size: 18px;
-			color: #555555;
-			margin-top: 5px;
-			margin-bottom: 20px;
-			box-sizing: border-box;
-		}
-		form a {
-			margin-left: 19%;
-			font-size: 13.5px;
-			color: #0077b3;
-			text-decoration: none;
-		}
-		form input[type=submit] {
-			background-color: #008080;
-			color: #ffffff;
-			border: none;
-			border-radius: 5px;
-			font-size: 18px;
-			padding: 10px 20px;
-			cursor: pointer;
-			margin-bottom: 20px;
-		}
-		form input[type=submit]:hover {
-			background-color: #c90052;
-		}
-		p {
-			margin-top: 20px;
-			text-align: center;
-			font-size: 18px;
-			color: #555555;
-		}
-		p a {
-			color: #0077b3;
-			text-decoration: none;
-		}
       .main-heading {
         font-size: 48px;
         margin-bottom: 20px;
@@ -137,6 +86,63 @@
         background-color: #006666;
         cursor: pointer;
       }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.facility-name,p {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+.facility-info {
+  font-size: 18px;
+  color: #555;
+  margin-left: 20px;
+}
+.facility-box {
+  display: inline-block;
+  background-color: #008080;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+.th-label {
+  font-weight: bold;
+  margin-right: 5px;
+  color: #008080;
+}
+
+.th-value {
+  color: black;
+}
+
       /* Style the footer */
       footer {
         display: flex;
@@ -152,39 +158,48 @@
       }
     </style>
   </head>
-
-  <% 
+<% 
 response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 if (session.getAttribute("mail") == null) {
 	response.sendRedirect("http://localhost:9999/BookMyGameApp/login.html");
 }
 %> 
-  
-  
   <body>
     <header>
       <div class="logo">Online Sports Booking</div>
       <ul class="nav">
-        <li><a href="../adminInterface.jsp">Home</a></li>
+        <li><a href="../playerInterface.jsp">Home</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
-    </header><br>
+    </header>
     <main>
 
+	<c:forEach items="${facilities}" var="object">
+		<form action="./book" method="post">
+			<table>
+				<tr>
+					<th>
+  <div class="facility-box">
+    <span class="facility-name">${object.fname}</span>
+  </div>
+  <span class="facility-info">
+    <span class="th-label">SPORT:</span>
+    <span class="th-value">${object.fsport}</span>
+    <span class="th-label">LOCATION:</span>
+    <span class="th-value">${object.floc}</span>
+    <span class="th-label">MAIL:</span>
+    <span class="th-value">${object.fmail}</span>
+  </span>
+</th>
+					<td><input type="hidden" name="fname" value="${object.fname}" /></td>
+					<td><input type="submit" value="book" /></td>
+				</tr>
+			</table>
+		</form>
+	</c:forEach>
 
-	<form action="./admincancelbookings">
-<div class="details">
-		<h2 align="center">Facility: ${fname}</h2>
-		<p>Booked Date: ${bookdate}</p>
-		<p>Booked By: ${usermail}</p>
-	</div>
-	<input type="hidden" name="fname" value="${fname}">
-	<input type="hidden" name="bdate" value="${bookdate}">
-	<input type="hidden" name="userMail" value="${usermail}">
-	<input type="text" name= "reason" placeholder="reason">
-	<input type="submit" value="cancel">	
-	</form>
+
+
 </main>
-	
-		</body>
-		</html>
+</body>
+</html>
