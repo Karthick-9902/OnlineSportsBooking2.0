@@ -107,8 +107,7 @@ public class ControllerServlet extends HttpServlet {
 				
 					response.sendRedirect(url);
 				} else {
-					rq = request.getRequestDispatcher("../login.html");
-					rq.forward(request, response);
+					response.sendRedirect("http://localhost:9999/BookMyGameApp/login.html");
 
 				}
 			} else if (userType.equalsIgnoreCase("manager")) {
@@ -119,8 +118,7 @@ public class ControllerServlet extends HttpServlet {
 					String url = response.encodeURL("../adminInterface.jsp");
 					response.sendRedirect(url);
 				} else {
-					rq = request.getRequestDispatcher("../login.html");
-					rq.forward(request, response);
+					response.sendRedirect("http://localhost:9999/BookMyGameApp/login.html");
 
 				}
 
